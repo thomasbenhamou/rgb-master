@@ -1,0 +1,8 @@
+export const SAVE_SCORES = 'SAVE_SCORE';
+export const CHANGE_DIFFICULTY = 'CHANGE_DIFFICULTY';
+export const RESUME_GAME = 'RESUME_GAME';
+export const PAUSE_GAME = 'PAUSE_GAME';
+export const SUBMIT_SCORE = 'SUBMIT_SCORE';
+export const SCORE_SUBMITTED = 'SCORE_SUBMITTED';
+export const FETCH_SCORES = 'FETCH_SCORES';
+export const SET_SCORES = 'SET_SCORES';
