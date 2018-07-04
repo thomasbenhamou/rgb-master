@@ -5,17 +5,42 @@ import PlayerNameInput from '../../Components/PlayerNameInput/PlayerNameInput';
 import { connect } from 'react-redux';
 import { submitScore } from '../../store/actions/game';
 import AnimatedTitle from '../../Components/AnimatedTitle/AnimatedTitle';
+import Sound from 'react-native-sound';
+import BackToMainButton from '../../Components/BackToMainButton/BackToMainButton';
 
 class Winning extends Component {
   static navigatorStyle = {
     navBarHidden: true
   };
 
-  state = {
-    playerName: 'Enter your name...'
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      playerName: 'Enter your name...'
+    };
+  }
 
   // lifecyclehooks
+  componentDidMount = () => {
+    let whoosh = new Sound('rgb_master_you_win.mp3', Sound.MAIN_BUNDLE, error => {
+      if (error) {
+        console.log('sound load failed');
+        return;
+      }
+      console.log('sound loaded');
+      whoosh.play(success => {
+        if (success) {
+          console.log('successfully finished playing');
+        } else {
+          console.log('playback failed due to audio decoding errors');
+          // reset the player to its uninitialized state (android only)
+          // this is the only option to recover after an error occured and use the player again
+          whoosh.reset();
+        }
+      });
+    });
+  };
+
   componentDidUpdate = () => {
     if (this.props.submitSuccess) {
       this.props.navigator.resetTo({ screen: 'rgbMaster.TopScoresScreen' });
@@ -86,6 +111,9 @@ class Winning extends Component {
             onFocus={this.onInputFocus}
           />
           <ShareScoreButton onPress={this.publishScore} />
+          <View style={{ marginTop: 20 }}>
+            <BackToMainButton onPress={() => this.props.navigator.pop()} />
+          </View>
         </View>
       </KeyboardAvoidingView>
     );

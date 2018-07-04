@@ -4,11 +4,14 @@ import RandomColor from '../../Components/RandomColor/RandomColor';
 import MyColor from '../../Components/MyColor/MyColor';
 import { connect } from 'react-redux';
 import { resumeGame, pauseGame } from '../../store/actions/game';
+import { createSoundClick, playSoundClick, createSoundWin } from '../../utility/sounds';
 
 class ColorGame extends Component {
   static navigatorStyle = {
     navBarHidden: true
   };
+
+  whoosh = createSoundClick();
 
   state = {
     randomColor: {
@@ -40,6 +43,7 @@ class ColorGame extends Component {
   componentWillUnmount = () => {
     // cancel all potentiel setStates to occur whereas component umounted ie causes memory leaks
     clearInterval(this.timerInterval);
+    this.whoosh.release();
   };
 
   componentDidMount = () => {
@@ -70,7 +74,6 @@ class ColorGame extends Component {
     const red = this.getRandomInt(0, 255, this.props.difficulty);
     const green = this.getRandomInt(0, 255, this.props.difficulty);
     const blue = this.getRandomInt(0, 255, this.props.difficulty);
-    alert(red + ',' + green + ',' + blue);
     this.setState({
       randomColor: {
         red: red,
@@ -128,6 +131,7 @@ class ColorGame extends Component {
     if (!this.state.gameStarted) {
       return;
     }
+    playSoundClick(this.whoosh);
     let newColorValue;
     if (add) {
       newColorValue = +(this.state.customColor[color] + this.props.difficulty);

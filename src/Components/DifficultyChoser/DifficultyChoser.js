@@ -4,9 +4,17 @@ import redSword from '../../assets/redSword.png';
 import graySword from '../../assets/graySword.png';
 import { connect } from 'react-redux';
 import { changeDifficulty } from '../../store/actions/game';
+import { createSoundClick, playSoundClick } from '../../utility/sounds';
 
 class DifficultyChoser extends Component {
+  whoosh = createSoundClick();
+
+  componentWillUnmount = () => {
+    this.whoosh.release();
+  };
+
   changeDifficulty = () => {
+    playSoundClick(this.whoosh);
     switch (this.props.difficulty) {
       case 10:
         this.props.onChangeDifficulty(5);

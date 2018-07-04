@@ -60,7 +60,7 @@ export const submitScore = (playerName, score, time, difficulty) => {
         dispatch(scoreSubmitted());
       })
       .catch(err => {
-        alert('Something went wrong, please try again');
+        alert('Your score has not been submitted, please try again');
       });
   };
 };
@@ -74,7 +74,7 @@ export const scoreSubmitted = () => {
 
 export const fetchScores = () => {
   return dispatch => {
-    fetch('https://rgb-master-game.firebaseio.com/scores.json')
+    fetch('https://rgb-master-game.firebaseio.com/scores.json?orderBy="score"&limitToFirst=50')
       .then(res => {
         if (res.ok) {
           return res.json();
@@ -103,7 +103,7 @@ export const fetchScores = () => {
         dispatch(setScores(scores));
       })
       .catch(err => {
-        alert('Something went wrong, please try again');
+        alert('The scores have not been retrieved, please try again');
       });
   };
 };

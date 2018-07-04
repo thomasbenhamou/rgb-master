@@ -7,6 +7,7 @@ class Settings extends Component {
   static navigatorStyle = {
     navBarHidden: true
   };
+
   render() {
     return (
       <View style={styles.container}>
