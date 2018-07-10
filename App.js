@@ -1,9 +1,7 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
 import { Navigation } from 'react-native-navigation';
 import ColorGame from './src/screens/ColorGame/ColorGame';
 import TopScores from './src/screens/TopScores/TopScores';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { Provider } from 'react-redux';
 import configureStore from './src/store/configureStore';
 import Settings from './src/screens/Settings/Settings';
@@ -27,8 +25,4 @@ Navigation.registerComponent('rgbMaster.IntroScreen', () => IntroScreen);
 
 // Start the app
 export default () =>
-  Navigation.startSingleScreenApp({
-    screen: {
-      screen: 'rgbMaster.WelcomeScreen'
-    }
-  });
+  Navigation.startSingleScreenApp({ screen: { screen: 'rgbMaster.WelcomeScreen' } });

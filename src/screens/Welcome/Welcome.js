@@ -2,11 +2,18 @@ import React, { Component } from 'react';
 import { StyleSheet, ImageBackground } from 'react-native';
 import MenuButton from '../../Components/MenuButton/MenuButton';
 import landingPage from '../../assets/landingPage.png';
+import SplashScreen from 'react-native-splash-screen';
 
 class Welcome extends Component {
   static navigatorStyle = {
     navBarHidden: true
   };
+
+  // if use componentDidMount(), the splash screen doesnt hide
+  // using componentWillMount() works but it has been deprecated since react 16
+  componentWillMount() {
+    SplashScreen.hide();
+  }
 
   openGame = () => {
     this.props.navigator.push({
