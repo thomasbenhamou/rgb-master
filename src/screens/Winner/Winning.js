@@ -10,7 +10,8 @@ import BackToMainButton from '../../Components/BackToMainButton/BackToMainButton
 
 class Winning extends Component {
   static navigatorStyle = {
-    navBarHidden: true
+    navBarHidden: true,
+    screenBackgroundColor: 'black'
   };
 
   constructor(props) {
@@ -112,7 +113,9 @@ class Winning extends Component {
           />
           <ShareScoreButton onPress={this.publishScore} />
           <View style={{ marginTop: 20 }}>
-            <BackToMainButton onPress={() => this.props.navigator.pop()} />
+            <BackToMainButton
+              onPress={() => this.props.navigator.resetTo({ screen: 'rgbMaster.WelcomeScreen' })}
+            />
           </View>
         </View>
       </KeyboardAvoidingView>

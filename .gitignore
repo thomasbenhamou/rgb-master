@@ -10,8 +10,10 @@
 /android/.gradle
 /android/.idea
 /android/app/build
+/android/app/my-release-key.keystore
 /android/gradle
 /android/keystores
+/android/gradle.properties
 
 /ios/build
 /ios/rgbmaster-tvOS
@@ -28,3 +30,4 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+

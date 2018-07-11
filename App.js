@@ -25,4 +25,11 @@ Navigation.registerComponent('rgbMaster.IntroScreen', () => IntroScreen);
 
 // Start the app
 export default () =>
-  Navigation.startSingleScreenApp({ screen: { screen: 'rgbMaster.WelcomeScreen' } });
+  Navigation.startSingleScreenApp({
+    screen: {
+      screen: 'rgbMaster.WelcomeScreen'
+    },
+    appStyle: {
+      orientation: 'portrait'
+    }
+  });

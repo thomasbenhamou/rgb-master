@@ -6,7 +6,8 @@ import BackToMainButton from '../../Components/BackToMainButton/BackToMainButton
 
 class PauseMenu extends Component {
   static navigatorStyle = {
-    navBarHidden: true
+    navBarHidden: true,
+    screenBackgroundColor: 'black'
   };
 
   closePauseMenu = () => {

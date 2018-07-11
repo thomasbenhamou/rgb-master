@@ -5,7 +5,8 @@ import BackToMainButton from '../../Components/BackToMainButton/BackToMainButton
 
 class Settings extends Component {
   static navigatorStyle = {
-    navBarHidden: true
+    navBarHidden: true,
+    screenBackgroundColor: 'black'
   };
 
   render() {

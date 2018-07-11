@@ -8,7 +8,8 @@ import { createSoundClick, playSoundClick, createSoundWin } from '../../utility/
 
 class ColorGame extends Component {
   static navigatorStyle = {
-    navBarHidden: true
+    navBarHidden: true,
+    screenBackgroundColor: 'black'
   };
 
   whoosh = createSoundClick();
@@ -167,17 +168,16 @@ class ColorGame extends Component {
       randomColor.green === customColor.green &&
       randomColor.blue === customColor.blue
     ) {
-      this.props.navigator.pop({
-        animated: false
-      });
-      this.props.navigator.push({
+      // this.props.navigator.pop({
+      //   animated: false
+      // });
+      this.props.navigator.resetTo({
         screen: 'rgbMaster.WinnerScreen',
         passProps: {
           score: score,
           time: time,
           randomColor: randomColor
-        },
-        animated: false
+        }
       });
     } else {
       return;
@@ -248,14 +248,20 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%'
   },
   randomColor: {
-    flexBasis: '49%',
+    flex: 1,
+    // flexBasis is not rendering well on Android
+    // flexBasis: '49%',
     width: '100%'
   },
   myColor: {
-    flexBasis: '51%',
+    flex: 1,
+    // flexBasis is not rendering well on Android
+    // flexBasis: '51%',
     width: '100%'
   }
 });

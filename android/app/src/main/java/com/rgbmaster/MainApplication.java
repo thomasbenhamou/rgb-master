@@ -14,6 +14,7 @@ import java.util.List;
 import com.reactnativenavigation.NavigationApplication;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.zmxv.RNSound.RNSoundPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 
 public class MainApplication extends NavigationApplication {
 
@@ -28,7 +29,8 @@ public class MainApplication extends NavigationApplication {
          // No need to add RnnPackage and MainReactPackage
          return Arrays.<ReactPackage>asList(
              new VectorIconsPackage(),
-             new RNSoundPackage()
+             new RNSoundPackage(),
+             new SplashScreenReactPackage()
          );
      }
 
